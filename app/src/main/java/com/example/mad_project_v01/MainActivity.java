@@ -8,7 +8,9 @@ import android.os.Handler;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,6 +43,15 @@ public class MainActivity extends AppCompatActivity {
         lable_super.setAnimation(topAnim);
         logo_android.setAnimation(bottomAnim);
         lable_android.setAnimation(bottomAnim);
+
+        //comments and complaints drop box
+        Spinner mySpinner=(Spinner) findViewById(R.id.spinner);
+
+        ArrayAdapter <String> myAdapter= new ArrayAdapter<String> (MainActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.SelectType));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setAdapter(myAdapter);
+
+
 
         new Handler().postDelayed(new Runnable() {
             @Override

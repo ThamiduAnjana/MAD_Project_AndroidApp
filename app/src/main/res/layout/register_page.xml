@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editTextTextPersonName3"
+        android:layout_width="296dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginEnd="102dp"
+
+        android:layout_marginRight="102dp"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="92dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="153dp"
+        android:layout_height="53dp"
+        app:srcCompat="@drawable/keells_super_logo_1"
+        tools:layout_editor_absoluteX="4dp"
+        tools:layout_editor_absoluteY="12dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName4"
+        android:layout_width="296dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginRight="102dp"
+        android:ems="10"
+        android:hint="Enter First Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.441"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName5"
+        android:layout_width="296dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginRight="102dp"
+        android:ems="10"
+        android:hint="Enter Last Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.441"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="296dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginRight="102dp"
+        android:ems="10"
+        android:hint="Enter Mobile No"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+
+    <EditText
+        android:id="@+id/editTextTextPostalAddress"
+        android:layout_width="296dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginRight="102dp"
+        android:ems="10"
+        android:hint="House or Lane"
+        android:inputType="textPostalAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+
+    <EditText
+        android:id="@+id/editTextTextPostalAddress2"
+        android:layout_width="296dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Street Name"
+        android:inputType="textPostalAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress" />
+
+    <EditText
+        android:id="@+id/editTextTextPostalAddress3"
+        android:layout_width="296dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="City"
+        android:inputType="textPostalAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress2" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="296dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="83dp"
+        android:layout_marginRight="83dp"
+        android:ems="10"
+        android:hint="Enter Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress3" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="296dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Enter New Password"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
+        tools:layout_editor_absoluteX="32dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword2"
+        android:layout_width="296dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        tools:layout_editor_absoluteX="32dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="296dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2"
+        tools:layout_editor_absoluteX="32dp"
+        tools:text="Your Password must contain a minimum of 8 characters with 1 Uppercase.Numeric & special character." />
+
+    <Button
+        android:id="@+id/button"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="644dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="80dp"
+        android:layout_height="87dp"
+        android:background="#FDFAFA"
+        android:visibility="visible"
+        app:srcCompat="@drawable/back_to_96px"
+        tools:layout_editor_absoluteX="328dp"
+        tools:layout_editor_absoluteY="5dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
