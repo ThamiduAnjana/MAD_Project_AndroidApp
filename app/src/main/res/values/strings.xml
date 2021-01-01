@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MAD_Project_V01</string>
+
+    <string-array name="SelectType">
+        <item>Comments</item>
+        <item>Complaints</item>
+    </string-array>
+
+
 </resources>
