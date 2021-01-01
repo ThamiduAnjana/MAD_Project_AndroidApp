@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Verificationcode_Page">
+
+    <ImageView
+        android:id="@+id/Logo_Keells"
+        android:layout_width="121dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="125dp"
+        android:src="@drawable/keells_super_logo_1"
+        app:layout_constraintEnd_toStartOf="@+id/btn_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/back_to_96px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_verify"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:hint="Verification Code"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Logo_Keells" />
+
+    <Button
+        android:id="@+id/btn_verify"
+        android:layout_width="131dp"
+        android:layout_height="50dp"
+        android:background="@drawable/style_button"
+        android:text="Verify"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_verify" />
+
+    <TextView
+        android:id="@+id/Lable_copyright2020"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Copyright2020"
+        android:textSize="17dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_verify" />
+
+    <ImageView
+        android:layout_width="29dp"
+        android:layout_height="24dp"
+        android:src="@drawable/copyright_96px"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Lable_copyright2020"
+        app:layout_constraintEnd_toStartOf="@+id/Lable_copyright2020"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Lable_copyright2020" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
