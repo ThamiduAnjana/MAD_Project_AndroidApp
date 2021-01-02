@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp">
+
+<!--    android:elevation="90dp"-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        tools:ignore="MissingConstraints"
+        android:background="@drawable/card_bg">
+
+        <LinearLayout
+            android:layout_width="175dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/lb_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Product Title"
+            android:textSize="15dp"
+            android:textColor="#239B56"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/lb_deis"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Product Description"
+            android:textSize="10dp"
+            />
+
+            <TextView
+                android:id="@+id/lb_price"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="Price : Rs.0.00"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:background="#CB4335"
+                android:textSize="15dp"
+                />
+
+            <Button
+                android:id="@+id/btn_add"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Add"
+                android:gravity="center"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorPrimary"
+                android:textColor="#FFF"
+                android:textSize="15dp"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/im_image"
+            android:layout_width="127dp"
+            android:layout_height="129dp"
+            android:padding="20dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"/>
+
+    </LinearLayout>
+    
+
+
+</androidx.cardview.widget.CardView>
