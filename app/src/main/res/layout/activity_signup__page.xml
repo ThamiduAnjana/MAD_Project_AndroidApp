@@ -98,17 +98,8 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_city"
         tools:ignore="MissingConstraints" />
 
-<!--    <EditText-->
-<!--        android:id="@+id/txt_contactno"-->
-<!--        android:layout_width="310dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:hint="Mobile No"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/txt_city" />-->
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txt_password"
+        android:id="@+id/txt_lpassword"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         app:passwordToggleEnabled="true"
@@ -118,6 +109,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_contactno" >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -126,16 +118,17 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txt_cpassword"
+        android:id="@+id/txt_lcpassword"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="#229954"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_password" >
+        app:layout_constraintTop_toBottomOf="@+id/txt_lpassword" >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_cpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirm Password"
@@ -154,52 +147,6 @@
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_cpassword" />
-
-<!--    <Button-->
-<!--        android:id="@+id/btn_PasswordShow"-->
-<!--        android:layout_width="25dp"-->
-<!--        android:layout_height="25dp"-->
-<!--        android:layout_marginLeft="275dp"-->
-<!--        android:background="@drawable/eye_96px"-->
-<!--        android:shadowColor="#333333"-->
-<!--        android:shadowDx="3"-->
-<!--        android:shadowDy="3"-->
-<!--        android:shadowRadius="5"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/txt_password"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/txt_password"-->
-<!--        app:layout_constraintStart_toStartOf="@id/txt_password"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/txt_password" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/txt_password"-->
-<!--        android:layout_width="323dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:hint="Password"-->
-<!--        android:inputType="textPassword"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/txt_email" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/btn_cPasswordShow"-->
-<!--        android:layout_width="25dp"-->
-<!--        android:layout_height="25dp"-->
-<!--        android:layout_marginLeft="275dp"-->
-<!--        android:background="@drawable/eye_96px"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/txt_cpassword"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/txt_cpassword"-->
-<!--        app:layout_constraintStart_toStartOf="@id/txt_cpassword"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/txt_cpassword" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/txt_cpassword"-->
-<!--        android:layout_width="323dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:hint="Confirm Password"-->
-<!--        android:inputType="textPassword"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/txt_password" />-->
+        app:layout_constraintTop_toBottomOf="@+id/txt_lcpassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

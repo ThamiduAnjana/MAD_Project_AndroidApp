@@ -59,10 +59,7 @@ public class CommentsAndComplaints_Page extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CommentsAndComplaints_Page.this,MainMenu_Page.class);
-                intent.putExtra("name",cus_name);
-                intent.putExtra("mobile",cus_contact);
-                startActivity(intent);
+                onBackPressed();
             }
         });
 
@@ -91,6 +88,7 @@ public class CommentsAndComplaints_Page extends AppCompatActivity {
                 intent.putExtra("name",cus_name);
                 intent.putExtra("mobile",cus_contact);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
                 finish();
 
             }
@@ -98,4 +96,14 @@ public class CommentsAndComplaints_Page extends AppCompatActivity {
 
     }
     private static final String[] titles = new String[]{"Comments","Complaints"};
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CommentsAndComplaints_Page.this,MainMenu_Page.class);
+        intent.putExtra("name",cus_name);
+        intent.putExtra("mobile",cus_contact);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
+        finish();
+    }
 }

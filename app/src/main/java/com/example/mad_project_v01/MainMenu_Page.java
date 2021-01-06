@@ -31,11 +31,7 @@ public class MainMenu_Page extends AppCompatActivity {
         backmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainMenu_Page.this,Home_Page.class);
-                intent.putExtra("name",cus_name);
-                intent.putExtra("mobile",cus_contact);
-                startActivity(intent);
-                finish();
+                onBackPressed();
             }
         });
         //Edit Profile
@@ -48,6 +44,8 @@ public class MainMenu_Page extends AppCompatActivity {
                 intent.putExtra("name",cus_name);
                 intent.putExtra("mobile",cus_contact);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_from_left,R.anim.slide_to_right);
+                finish();
             }
         });
         //Shipping Deatils
@@ -60,6 +58,8 @@ public class MainMenu_Page extends AppCompatActivity {
                 intent.putExtra("name",cus_name);
                 intent.putExtra("mobile",cus_contact);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_from_left,R.anim.slide_to_right);
+                finish();
             }
         });
         //Password Change
@@ -73,6 +73,8 @@ public class MainMenu_Page extends AppCompatActivity {
                 intent.putExtra("screen","mainmenu");
                 intent.putExtra("name",cus_name);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_from_left,R.anim.slide_to_right);
+                finish();
             }
         });
         //Comments And Comlaints
@@ -85,6 +87,22 @@ public class MainMenu_Page extends AppCompatActivity {
                 intent.putExtra("name",cus_name);
                 intent.putExtra("mobile",cus_contact);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_from_left,R.anim.slide_to_right);
+                finish();
+            }
+        });
+        //Contact us with Google Map
+        Button btn_contactus = (Button)findViewById(R.id.btn_contactus);
+
+        btn_contactus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainMenu_Page.this,ContactUsGMap_Page.class);
+                intent.putExtra("name",cus_name);
+                intent.putExtra("mobile",cus_contact);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_from_left,R.anim.slide_to_right);
+                finish();
             }
         });
         //Log out
@@ -96,8 +114,19 @@ public class MainMenu_Page extends AppCompatActivity {
                 Toast.makeText(MainMenu_Page.this,"Log out",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(MainMenu_Page.this,Signin_Page.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.static_animation,R.anim.zoom_out);
                 finish();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(MainMenu_Page.this,Home_Page.class);
+        intent.putExtra("name",cus_name);
+        intent.putExtra("mobile",cus_contact);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_from_top,R.anim.slide_to_bottom);
+        finish();
     }
 }

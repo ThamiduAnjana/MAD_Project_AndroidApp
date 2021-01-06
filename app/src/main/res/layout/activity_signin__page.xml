@@ -10,7 +10,7 @@
         android:id="@+id/Logo_Keells"
         android:layout_width="156dp"
         android:layout_height="81dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:src="@drawable/keells_super_logo_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,57 +37,142 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Lable_Signin" />
 
-    <EditText
-        android:id="@+id/txt_email"
+    <com.santalu.maskedittext.MaskEditText
+        android:id="@+id/txt_contactno"
         android:layout_width="287dp"
         android:layout_height="56dp"
         android:layout_marginTop="25dp"
-        android:ems="10"
-        android:hint="Enter Email"
-        android:inputType="textPersonName"
-        android:textColorHighlight="#4CAF50"
-        android:textColorLink="#4CAF50"
-        android:textIsSelectable="false"
+        android:hint="Mobile No"
+        android:inputType="phone"
+        app:met_mask="(+94)## ### ####"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Lable_Infor" />
+        app:layout_constraintTop_toBottomOf="@+id/Lable_Infor"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/Lable_txtEmail_Infor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="We'll never share your email with anyone else."
+        android:text="We'll never share your mobile no with anyone else."
         android:textSize="12sp"
+        android:layout_marginRight="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_email" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_contactno" />
 
-    <EditText
-        android:id="@+id/txt_Password"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_password"
         android:layout_width="287dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:hint="Enter Password"
-        android:inputType="textPersonName"
-        android:password="true"
-        android:textColorHighlight="#4CAF50"
-        android:textColorLink="#4CAF50"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="#229954"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Lable_txtEmail_Infor" />
+        app:layout_constraintTop_toBottomOf="@+id/Lable_txtEmail_Infor" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:maxLength="8"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <TextView
         android:id="@+id/link_ForgetPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forget Password"
-        android:textColor="#0A6BBF"
+        android:text="@string/fogetpassword"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:layout_marginRight="150dp"
+        android:layout_marginRight="165dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_Password" />
+        app:layout_constraintTop_toBottomOf="@+id/layout_password" />
+
+    <TextView
+        android:id="@+id/Lable_Reg_Infor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="If you want to create new account,"
+        android:textSize="12sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/link_ForgetPassword" />
+
+    <TextView
+        android:id="@+id/Link_Registration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="198dp"
+        android:text="@string/registration"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Lable_Reg_Infor" />
+
+    <LinearLayout
+        android:id="@+id/layout_btnpro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Link_Registration">
+
+        <Button
+            android:id="@+id/btn_Signin"
+            android:layout_width="131dp"
+            android:layout_height="50dp"
+            android:background="@drawable/style_button"
+            android:text="Sign in"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Link_Registration" />
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/Lable_copyright2020"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Copyright2020"
+        android:textSize="17dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_btnpro" />
+
+    <ImageView
+        android:layout_width="29dp"
+        android:layout_height="24dp"
+        android:src="@drawable/copyright_96px"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Lable_copyright2020"
+        app:layout_constraintEnd_toStartOf="@+id/Lable_copyright2020"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Lable_copyright2020" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

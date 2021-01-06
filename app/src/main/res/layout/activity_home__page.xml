@@ -11,9 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="175dp"
         android:background="@drawable/homebg_top"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal" />
 
     <ImageView
         android:id="@+id/Logo_Keells"
@@ -41,9 +44,10 @@
         android:id="@+id/lb_cartprice"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:layout_marginRight="105dp"
-        android:layout_marginLeft="15dp"
+        android:padding="5dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="125dp"
+        android:layout_marginLeft="25dp"
         android:text="Rs.0.00"
         android:textColor="#FFFFFF"
         android:textSize="15dp"
@@ -52,7 +56,7 @@
         app:layout_constraintStart_toEndOf="@+id/icon_shippingcart" />
 
     <Button
-        android:id="@+id/btn_back"
+        android:id="@+id/btn_logout"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginRight="25dp"
@@ -78,7 +82,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="485dp"
+        android:layout_height="585dp"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,8 +91,8 @@
     <LinearLayout
         android:id="@+id/bottomlayer"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_marginTop="458dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="499dp"
         android:background="@drawable/home_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -117,9 +121,10 @@
         android:id="@+id/btn_menu"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginTop="415dp"
         android:layout_marginRight="25dp"
-        android:layout_marginTop="425dp"
         android:background="@drawable/xbox_menu_96px"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/card_view" />
 

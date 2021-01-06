@@ -30,9 +30,7 @@ public class EnterPhoneNumber_Page extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EnterPhoneNumber_Page.this,Signin_Page.class);
-                startActivity(intent);
-                finish();
+                onBackPressed();
             }
         });
 
@@ -86,5 +84,13 @@ public class EnterPhoneNumber_Page extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(EnterPhoneNumber_Page.this,Signin_Page.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_from_left,R.anim.slide_to_right);
+        finish();
     }
 }

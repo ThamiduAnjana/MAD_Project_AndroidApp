@@ -8,10 +8,9 @@ import android.os.Handler;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+
+//        Toast.makeText(MainActivity.this,"Firebase connection success",Toast.LENGTH_LONG).show();
 
         //Animations
         topAnim = AnimationUtils.loadAnimation(this,R.anim.top_animation);
@@ -44,20 +45,12 @@ public class MainActivity extends AppCompatActivity {
         logo_android.setAnimation(bottomAnim);
         lable_android.setAnimation(bottomAnim);
 
-        //comments and complaints drop box
-        Spinner mySpinner=(Spinner) findViewById(R.id.spinner);
-
-        ArrayAdapter <String> myAdapter= new ArrayAdapter<String> (MainActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.SelectType));
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner.setAdapter(myAdapter);
-
-
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent intent = new Intent( MainActivity.this, Signin_Page.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.zoom_in,R.anim.static_animation);
                 finish();
             }
         },SPLASH_SCREEN);
