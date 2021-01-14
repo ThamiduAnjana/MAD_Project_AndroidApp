@@ -42,12 +42,12 @@ public class Home_Page extends AppCompatActivity {
         card_viewlist.setHasFixedSize(true);
         card_viewlist.setLayoutManager(new LinearLayoutManager(this));
 
-        cus_name = getIntent().getExtras().getString("name");
-        TextView uName = (TextView)findViewById(R.id.lb_cusname);
-        uName.setText(cus_name);
-
         cus_contact = getIntent().getExtras().getString("mobile");
         cus_title = getIntent().getExtras().getString("title");
+
+        cus_name = getIntent().getExtras().getString("name");
+        TextView uName = (TextView)findViewById(R.id.lb_cusname);
+        uName.setText("Hi!,"+cus_title+cus_name);
 
         Button menu = (Button)findViewById(R.id.btn_menu);
 

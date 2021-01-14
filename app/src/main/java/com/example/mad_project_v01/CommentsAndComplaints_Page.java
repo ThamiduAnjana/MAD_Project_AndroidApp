@@ -78,21 +78,24 @@ public class CommentsAndComplaints_Page extends AppCompatActivity {
                 final String cus_mname = c_mname.getText().toString();
                 String message =  c_message.getText().toString();
 
-                DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("commentsandcomplaints");
+                if(!select_type.trim().isEmpty() && !cus_mname.trim().isEmpty() && !message.trim().isEmpty()){
+                    DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("commentsandcomplaints");
 
-                CommentsAndComplaints obj = new CommentsAndComplaints(select_type,cus_mname,message);
+                    CommentsAndComplaints obj = new CommentsAndComplaints(select_type,cus_mname,message);
 
-                DatabaseRef.child(cus_contact).setValue(obj);
+                    DatabaseRef.child(cus_contact).setValue(obj);
 
-                Toast.makeText(CommentsAndComplaints_Page.this,"Send Successful..!",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(CommentsAndComplaints_Page.this,MainMenu_Page.class);
-                intent.putExtra("title",cus_title);
-                intent.putExtra("name",cus_name);
-                intent.putExtra("mobile",cus_contact);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
-                finish();
-
+                    Toast.makeText(CommentsAndComplaints_Page.this,"Send Successful..!",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(CommentsAndComplaints_Page.this,MainMenu_Page.class);
+                    intent.putExtra("title",cus_title);
+                    intent.putExtra("name",cus_name);
+                    intent.putExtra("mobile",cus_contact);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
+                    finish();
+                }else {
+                    Toast.makeText(CommentsAndComplaints_Page.this,"Fill out all field..!",Toast.LENGTH_LONG).show();
+                }
             }
         });
 

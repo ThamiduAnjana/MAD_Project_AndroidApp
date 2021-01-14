@@ -1,10 +1,16 @@
 package com.example.mad_project_v01;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -27,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-//        Toast.makeText(MainActivity.this,"Firebase connection success",Toast.LENGTH_LONG).show();
+
+//      Toast.makeText(MainActivity.this,"Firebase connection success",Toast.LENGTH_LONG).show();
 
         //Animations
         topAnim = AnimationUtils.loadAnimation(this,R.anim.top_animation);
@@ -55,4 +62,6 @@ public class MainActivity extends AppCompatActivity {
             }
         },SPLASH_SCREEN);
     }
+
+
 }

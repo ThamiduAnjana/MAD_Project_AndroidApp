@@ -80,35 +80,41 @@ public class Signup_Page extends AppCompatActivity {
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try{
+                    //get password
+                    final String password = cpass.getText().toString();
+                    final String cpassword = ccpass.getText().toString();
+                    //Get data
+                    String title = selected_cus_title;
+                    String fname = cfname.getText().toString();
+                    String lname =  clname.getText().toString();
+                    String address = caddress.getText().toString();
+                    String city = ccity.getText().toString();
+                    final String mobile = cmobile.getText().toString();
 
-                //get password
-                final String password = cpass.getText().toString();
-                final String cpassword = ccpass.getText().toString();
-                //Get data
-                String title = selected_cus_title;
-                String fname = cfname.getText().toString();
-                String lname =  clname.getText().toString();
-                String address = caddress.getText().toString();
-                String city = ccity.getText().toString();
-                final String mobile = cmobile.getText().toString();
+                    if(!title.trim().isEmpty() && !fname.trim().isEmpty() && !lname.trim().isEmpty() && !address.trim().isEmpty() && !city.trim().isEmpty() && !mobile.trim().isEmpty()){
+                        if(cpassword.equals(password)){
 
-                if(cpassword.equals(password)){
+                            DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("users");
 
-                    DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("users");
+                            Customer obj = new Customer(title,fname,lname,address,city,mobile,password);
 
-                    Customer obj = new Customer(title,fname,lname,address,city,mobile,password);
+                            DatabaseRef.child(mobile).setValue(obj);
 
-                    DatabaseRef.child(mobile).setValue(obj);
+                            Toast.makeText(Signup_Page.this,"Registration Successful..!",Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(Signup_Page.this,Signin_Page.class);
+                            startActivity(intent);
+                            finish();
 
-                    Toast.makeText(Signup_Page.this,"Registration Successful..!",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(Signup_Page.this,Signin_Page.class);
-                    startActivity(intent);
-                    finish();
-
-                }else {
-                    Toast.makeText(Signup_Page.this,"Again check your Password..! > '"+password+"'",Toast.LENGTH_LONG).show();
+                        }else {
+                            Toast.makeText(Signup_Page.this,"Again check your Password..! > '"+password+"'",Toast.LENGTH_LONG).show();
+                        }
+                    }else {
+                        Toast.makeText(Signup_Page.this,"Fill out all the details..!",Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(Signup_Page.this,"Fill out all the details..!",Toast.LENGTH_LONG).show();
                 }
-
             }
         });
 

@@ -20,12 +20,12 @@ public class MainMenu_Page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu__page);
 
-        cus_name = getIntent().getExtras().getString("name");
-        TextView uName = (TextView)findViewById(R.id.lb_cusname);
-        uName.setText(cus_name);
-
         cus_contact = getIntent().getExtras().getString("mobile");
         cus_title = getIntent().getExtras().getString("title");
+
+        cus_name = getIntent().getExtras().getString("name");
+        TextView uName = (TextView)findViewById(R.id.lb_cusname);
+        uName.setText("Hi!"+cus_title+cus_name);
 
         Button backmenu = (Button)findViewById(R.id.btn_backmenu);
 

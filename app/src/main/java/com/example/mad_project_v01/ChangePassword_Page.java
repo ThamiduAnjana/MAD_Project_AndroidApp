@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -40,39 +41,43 @@ public class ChangePassword_Page extends AppCompatActivity {
             }
         });
 
-        final EditText fpassword = (EditText)findViewById(R.id.txt_password);
-        final EditText copassword = (EditText)findViewById(R.id.txt_cpassword);
-
-        //get data
-        final String password = fpassword.getText().toString();
-        final String cpassword = copassword.getText().toString();
+        final TextInputEditText fpassword = (TextInputEditText)findViewById(R.id.txt_password);
+        final TextInputEditText copassword = (TextInputEditText)findViewById(R.id.txt_cpassword);
 
         Button btn_save = (Button)findViewById(R.id.btn_save);
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(password.equals(cpassword)){
-                    DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("users");
+                //get data
+                final String password = fpassword.getText().toString();
+                final String cpassword = copassword.getText().toString();
 
-                    HashMap hashMap = new HashMap();
-                    hashMap.put("password",password);
+                if(!password.trim().isEmpty() && !cpassword.trim().isEmpty()){
+                    if(password.equals(cpassword)){
+                        DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("users");
 
-                    DatabaseRef.child(cus_contact).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
-                        @Override
-                        public void onSuccess(Object o) {
-                            Toast.makeText(ChangePassword_Page.this,"Your password is successfully update.",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(ChangePassword_Page.this,Signin_Page.class);
-                            startActivity(intent);
-                            overridePendingTransition(R.anim.static_animation,R.anim.zoom_out);
-                            finish();
-                        }
-                    });
+                        HashMap hashMap = new HashMap();
+                        hashMap.put("password",password);
 
+                        DatabaseRef.child(cus_contact).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
+                            @Override
+                            public void onSuccess(Object o) {
+                                Toast.makeText(ChangePassword_Page.this,"Your password is successfully update.",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(ChangePassword_Page.this,Signin_Page.class);
+                                startActivity(intent);
+                                overridePendingTransition(R.anim.static_animation,R.anim.zoom_out);
+                                finish();
+                            }
+                        });
+
+                    }else {
+                        Toast.makeText(ChangePassword_Page.this,"Check your password",Toast.LENGTH_SHORT).show();
+                        fpassword.setText("");
+                        copassword.setText("");
+                    }
                 }else {
-                    Toast.makeText(ChangePassword_Page.this,"Check your password",Toast.LENGTH_SHORT).show();
-                    fpassword.setText("");
-                    copassword.setText("");
+                    Toast.makeText(ChangePassword_Page.this,"Fill out the empty fields.",Toast.LENGTH_SHORT).show();
                 }
             }
         });

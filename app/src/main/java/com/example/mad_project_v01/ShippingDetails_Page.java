@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
@@ -38,6 +39,7 @@ public class ShippingDetails_Page extends AppCompatActivity {
             }
         });
 
+
         final EditText caddress = (EditText)findViewById(R.id.txt_address);
 
         Button btn_update = (Button)findViewById(R.id.btn_Update);
@@ -45,23 +47,37 @@ public class ShippingDetails_Page extends AppCompatActivity {
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String address = caddress.getText().toString();
-                HashMap hashMap = new HashMap();
-                hashMap.put("address",address);
+                try{
 
-                DatabaseRef.child(cus_contact).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
-                    @Override
-                    public void onSuccess(Object o) {
-                        Toast.makeText(ShippingDetails_Page.this,"Your Data is successfully update.",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(ShippingDetails_Page.this,MainMenu_Page.class);
-                        intent.putExtra("title",cus_title);
-                        intent.putExtra("name",cus_name);
-                        intent.putExtra("mobile",cus_contact);
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
-                        finish();
+                    String address = caddress.getText().toString();
+
+                    if(!address.trim().isEmpty()){
+
+                        HashMap hashMap = new HashMap();
+                        hashMap.put("address",address);
+
+                        DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("users");
+                        DatabaseRef.child(cus_contact).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
+                            @Override
+                            public void onSuccess(Object o) {
+                                Toast.makeText(ShippingDetails_Page.this,"Your Data is successfully update.",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(ShippingDetails_Page.this,MainMenu_Page.class);
+                                intent.putExtra("title",cus_title);
+                                intent.putExtra("name",cus_name);
+                                intent.putExtra("mobile",cus_contact);
+                                startActivity(intent);
+                                overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
+                                finish();
+                            }
+                        });
+                    }else {
+                        Toast.makeText(ShippingDetails_Page.this,"fill the empty filed",Toast.LENGTH_SHORT).show();
                     }
-                });
+
+                }catch (Exception e){
+                    Toast.makeText(ShippingDetails_Page.this,"Error",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
