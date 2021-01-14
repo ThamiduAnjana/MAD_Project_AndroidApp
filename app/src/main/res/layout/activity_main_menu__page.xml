@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainMenu_Page">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:background="@drawable/homebg_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal" />
+
+    <ImageView
+        android:id="@+id/Logo_Keells"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/keells_super_logo_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/lb_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="My Account"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#FFF"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Logo_Keells"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    //Menu
+
+    //Profile Edit
+    <LinearLayout
+        android:id="@+id/layout_btn1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/Logo_Keells"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_editprofie"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:text="Profile Edit"
+            android:textSize="17dp"
+            android:gravity="left"
+            android:padding="12dp"
+            android:background="#FFF"
+        />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/next_page_96px"/>
+
+    </LinearLayout>
+
+    //Shipping Details
+    <LinearLayout
+        android:id="@+id/layout_btn2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/layout_btn1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_shippingdeatils"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:text="Shipping Details"
+            android:textSize="17dp"
+            android:gravity="left"
+            android:padding="12dp"
+            android:background="#FFF"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/next_page_96px"/>
+
+    </LinearLayout>
+
+    //Change Password
+    <LinearLayout
+        android:id="@+id/layout_btn3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/layout_btn2"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_changepassword"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:text="Change Password"
+            android:textSize="17dp"
+            android:background="#FFF"
+            android:gravity="left"
+            android:padding="12dp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/next_page_96px"/>
+
+    </LinearLayout>
+
+    //Save Cart
+    <LinearLayout
+        android:id="@+id/layout_btn4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/layout_btn3"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_savecart"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:background="#FFF"
+            android:text="Save Cart"
+            android:textSize="17dp"
+            android:gravity="left"
+            android:padding="12dp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/next_page_96px"/>
+
+    </LinearLayout>
+
+<!--    //Past Orders-->
+<!--    <LinearLayout-->
+<!--        android:id="@+id/layout_btn5"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginRight="25dp"-->
+<!--        android:layout_marginLeft="25dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/layout_btn4"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_pastorders"-->
+<!--            android:layout_width="265dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Past Orders"-->
+<!--            android:textSize="17dp"-->
+<!--            android:gravity="left"-->
+<!--            android:padding="12dp"-->
+<!--            />-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="5dp"-->
+<!--            android:src="@drawable/next_page_96px"/>-->
+
+<!--    </LinearLayout>-->
+
+<!--    //Track My Order-->
+<!--    <LinearLayout-->
+<!--        android:id="@+id/layout_btn6"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginRight="25dp"-->
+<!--        android:layout_marginLeft="25dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/layout_btn5"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_trackmyorder"-->
+<!--            android:layout_width="265dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Track My Order"-->
+<!--            android:background="#E5E7E9"-->
+<!--            android:textSize="17dp"-->
+<!--            android:gravity="left"-->
+<!--            android:padding="12dp"-->
+<!--            />-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="5dp"-->
+<!--            android:src="@drawable/next_page_96px"/>-->
+
+<!--    </LinearLayout>-->
+
+    //Comments and Complaints
+    <LinearLayout
+        android:id="@+id/layout_btn7"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/layout_btn4"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_commcompl"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:text="Comments | Complaints"
+            android:textSize="17dp"
+            android:gravity="left"
+            android:padding="12dp"
+            android:background="#FFF"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/next_page_96px"/>
+
+    </LinearLayout>
+
+    //Contact Us
+    <LinearLayout
+        android:id="@+id/layout_btn8"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/layout_btn7"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_contactus"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:text="Contact Us"
+            android:background="#FFF"
+            android:textSize="17dp"
+            android:gravity="left"
+            android:padding="12dp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/next_page_96px"/>
+
+    </LinearLayout>
+
+    //Logout
+    <LinearLayout
+        android:id="@+id/layout_btn9"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/layout_btn8"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:text="Log Out"
+            android:textSize="17dp"
+            android:gravity="left"
+            android:padding="12dp"
+            android:background="#FFF"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/next_page_96px"/>
+
+    </LinearLayout>
+
+    //Menu End
+
+    <LinearLayout
+        android:id="@+id/bottomlayer"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_marginTop="155dp"
+        android:background="@drawable/home_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_btn9">
+
+        <TextView
+            android:id="@+id/lb_cusname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:text="Welcome,Cus Name"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/menu_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_backmenu"
+        app:layout_constraintEnd_toEndOf="@+id/btn_backmenu"
+        app:layout_constraintTop_toTopOf="@+id/btn_backmenu"/>
+
+    <Button
+        android:id="@+id/btn_backmenu"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/cancel_96px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_btn9" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
