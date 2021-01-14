@@ -88,40 +88,42 @@ public class ProfileEdit_Page extends AppCompatActivity {
         btn_Update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("users");
 
-                //Get data
-                final String title = selected_cus_title;
-                final String fname = cfname.getText().toString();
-                String lname =  clname.getText().toString();
-                String address = caddress.getText().toString();
-                String city = ccity.getText().toString();
-
-                HashMap hashMap = new HashMap();
-
-                if(!title.trim().isEmpty() && !fname.trim().isEmpty() && !lname.trim().isEmpty() && !address.trim().isEmpty() && !city.trim().isEmpty()){
-                    hashMap.put("title",title);
-                    hashMap.put("fname",fname);
-                    hashMap.put("lname",lname);
-                    hashMap.put("address",address);
-                    hashMap.put("city",city);
-                }else {
-                    Toast.makeText(ProfileEdit_Page.this,"Fill out that you want.",Toast.LENGTH_SHORT).show();
-                }
                 try{
-                    DatabaseRef.child(cus_contact).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
-                        @Override
-                        public void onSuccess(Object o) {
-                            Toast.makeText(ProfileEdit_Page.this,"Your Data is successfully update.",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(ProfileEdit_Page.this,MainMenu_Page.class);
-                            intent.putExtra("title",title);
-                            intent.putExtra("name",fname);
-                            intent.putExtra("mobile",cus_contact);
-                            startActivity(intent);
-                            overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
-                            finish();
-                        }
-                    });
+                    DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("users");
+
+                    //Get data
+                    final String title = selected_cus_title;
+                    final String fname = cfname.getText().toString();
+                    String lname =  clname.getText().toString();
+                    String address = caddress.getText().toString();
+                    String city = ccity.getText().toString();
+
+                    HashMap hashMap = new HashMap();
+
+                    if(!title.trim().isEmpty() && !fname.trim().isEmpty() && !lname.trim().isEmpty() && !address.trim().isEmpty() && !city.trim().isEmpty()){
+                        hashMap.put("title",title);
+                        hashMap.put("fname",fname);
+                        hashMap.put("lname",lname);
+                        hashMap.put("address",address);
+                        hashMap.put("city",city);
+
+                        DatabaseRef.child(cus_contact).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
+                            @Override
+                            public void onSuccess(Object o) {
+                                Toast.makeText(ProfileEdit_Page.this,"Your Data is successfully update.",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(ProfileEdit_Page.this,MainMenu_Page.class);
+                                intent.putExtra("title",title);
+                                intent.putExtra("name",fname);
+                                intent.putExtra("mobile",cus_contact);
+                                startActivity(intent);
+                                overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
+                                finish();
+                            }
+                        });
+                    }else {
+                        Toast.makeText(ProfileEdit_Page.this,"Fill out that you want.",Toast.LENGTH_SHORT).show();
+                    }
                 }catch (Exception e){
                     Toast.makeText(ProfileEdit_Page.this,"Fill out that you want.",Toast.LENGTH_SHORT).show();
                 }
