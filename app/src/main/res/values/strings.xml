@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Keells</string>
+    <string name="fogetpassword">
+        <a href="#">Forget Password</a>
+    </string>
+    <string name="registration">
+        <a href="Signup_page">Registration</a>
+    </string>
+    <string name="recendOTP">
+        <a href="#">Resend OTP</a>
+    </string>
+    <string name="google_map_key">AIzaSyD3jknvZjaAX67LphC8ykUQGTnzRYBX7Kc</string>
+    <string name="error">Error..</string>
+    <string name="loading">Loading..</string>
+
+    <string-array name="title">
+        <item>Mr.</item>
+        <item>Mrs.</item>
+        <item>Miss.</item>
+        <item>Ms.</item>
+        <item>Dr.</item>
+        <item>Rev.</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="CoCoitems">
+        <item>Comments</item>
+        <item>Complaints</item>
+    </string-array>
+
+    <string-array name="Paymentmethod">
+        <item>Credit Cards</item>
+        <item>Cash On Delivery</item>
+    </string-array>
+
+    <string-array name="CardType">
+        <item>VISA</item>
+        <item>MasterCard</item>
+    </string-array>
+
+
+</resources>
