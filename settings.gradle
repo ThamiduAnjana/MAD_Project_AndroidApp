@@ -1,2 +1,0 @@
-include ':app'
-rootProject.name = "MAD_Project_V01"
