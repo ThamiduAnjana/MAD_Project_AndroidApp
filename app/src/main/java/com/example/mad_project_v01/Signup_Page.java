@@ -12,6 +12,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -32,29 +33,26 @@ public class Signup_Page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup__page);
 
-        //Dropdown
-        final AutoCompleteTextView cus_title = (AutoCompleteTextView)findViewById(R.id.txt_title);
-        ImageView cus_title_icon = (ImageView)findViewById(R.id.dropdown_icon);
+        //Dorpdown
 
-        cus_title.setThreshold(0);
+        Spinner Spinnertxt_title = (Spinner)findViewById(R.id.txt_title);
+        ArrayAdapter<String> title_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.title));
+        title_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinnertxt_title.setAdapter(title_adapter);
 
-        ArrayAdapter<String>adapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,titles);
-        cus_title.setAdapter(adapter);
-        //get Selected data
-        cus_title.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        Spinnertxt_title.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selected_cus_title = parent.getItemAtPosition(position).toString();
             }
-        });
 
-        cus_title_icon.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                cus_title.showDropDown();
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
-        //End Dropdown
+
+        //Dorpdown end
 
         Button btn_back = (Button)findViewById(R.id.btn_back);
 
@@ -66,7 +64,6 @@ public class Signup_Page extends AppCompatActivity {
         });
 
         //Register Customer
-        final AutoCompleteTextView ctitle = (AutoCompleteTextView)findViewById(R.id.txt_title);
         final EditText cfname = (EditText)findViewById(R.id.txt_fname);
         final EditText clname = (EditText)findViewById(R.id.txt_lname);
         final EditText caddress = (EditText)findViewById(R.id.txt_address);
@@ -120,7 +117,6 @@ public class Signup_Page extends AppCompatActivity {
 
 
     }
-    private static final String[] titles = new String[]{"Mr.","Mrs.","Miss.","Ms.","Dr.","Rev.","Other"};
 
     @Override
     public void onBackPressed() {

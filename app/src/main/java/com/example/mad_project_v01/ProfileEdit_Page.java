@@ -14,6 +14,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -43,29 +44,26 @@ public class ProfileEdit_Page extends AppCompatActivity {
         cus_name = getIntent().getExtras().getString("name");
         cus_title = getIntent().getExtras().getString("title");
 
-        //Dropdown
-        final AutoCompleteTextView cus_title = (AutoCompleteTextView)findViewById(R.id.txt_title);
-        ImageView cus_title_icon = (ImageView)findViewById(R.id.dropdown_icon);
+        //Dorpdown
 
-        cus_title.setThreshold(0);
+        Spinner Spinnertxt_title = (Spinner)findViewById(R.id.txt_title);
+        ArrayAdapter<String> title_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.title));
+        title_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinnertxt_title.setAdapter(title_adapter);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,titles);
-        cus_title.setAdapter(adapter);
-        //get Selected data
-        cus_title.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        Spinnertxt_title.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selected_cus_title = parent.getItemAtPosition(position).toString();
             }
-        });
 
-        cus_title_icon.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                cus_title.showDropDown();
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
-        //End Dropdown
+
+        //Dorpdown end
 
         Button btn_back = (Button)findViewById(R.id.btn_back);
 
@@ -151,8 +149,19 @@ public class ProfileEdit_Page extends AppCompatActivity {
                     caddress = (EditText)findViewById(R.id.txt_address);
                     ccity = (EditText)findViewById(R.id.txt_city);
 
-                    AutoCompleteTextView cus_title = (AutoCompleteTextView)findViewById(R.id.txt_title);
-                    cus_title.setText(usertitle,false);
+                    Spinner Spinnertxt_title = (Spinner)findViewById(R.id.txt_title);
+
+                    switch (usertitle){
+                        case "Mr.": Spinnertxt_title.setSelection(0);break;
+                        case "Mrs.": Spinnertxt_title.setSelection(1);break;
+                        case "Miss.": Spinnertxt_title.setSelection(2);break;
+                        case "Ms.": Spinnertxt_title.setSelection(3);break;
+                        case "Dr.": Spinnertxt_title.setSelection(4);break;
+                        case "Rev.": Spinnertxt_title.setSelection(5);break;
+                        case "Other": Spinnertxt_title.setSelection(6);break;
+                        default: Spinnertxt_title.setSelection(0);
+                    }
+
 
                     cfname.setText(userfname);
                     clname.setText(userlname);
@@ -170,8 +179,6 @@ public class ProfileEdit_Page extends AppCompatActivity {
             }
         });
     }
-
-    private static final String[] titles = new String[]{"Mr.","Mrs.","Miss.","Ms.","Dr.","Rev.","Other"};
 
     @Override
     public void onBackPressed() {

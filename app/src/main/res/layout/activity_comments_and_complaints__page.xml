@@ -27,26 +27,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/dropdown_icon"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginLeft="275dp"
-        android:src="@drawable/dropdown_arrow_96px"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_selectbox"
-        app:layout_constraintEnd_toEndOf="@+id/txt_selectbox"
-        app:layout_constraintStart_toStartOf="@+id/txt_selectbox"
-        app:layout_constraintTop_toTopOf="@+id/txt_selectbox" />
-
-    <AutoCompleteTextView
+    <Spinner
         android:id="@+id/txt_selectbox"
         android:layout_width="310dp"
-        android:layout_height="wrap_content"
-        android:hint="Select Type"
+        android:layout_height="45dp"
         android:layout_marginTop="100dp"
+        android:entries="@array/CoCoitems"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Logo_Keells" />
+
 
     <EditText
         android:id="@+id/txt_mname"

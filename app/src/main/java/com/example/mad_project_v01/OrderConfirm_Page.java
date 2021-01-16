@@ -11,6 +11,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,28 +54,25 @@ public class OrderConfirm_Page extends AppCompatActivity {
             }
         });
 
-        //Dropdown
-        final AutoCompleteTextView cardtype = (AutoCompleteTextView)findViewById(R.id.txt_cardtype);
-        ImageView cardtype_icon = (ImageView)findViewById(R.id.dropdown_icon);
+        //Dorpdown
 
-        cardtype.setThreshold(0);
+        Spinner txt_cardtype = (Spinner)findViewById(R.id.txt_cardtype);
+        ArrayAdapter<String> title_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.CardType));
+        title_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        txt_cardtype.setAdapter(title_adapter);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,CardType);
-        cardtype.setAdapter(adapter);
-        //get Selected data
-        cardtype.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        txt_cardtype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selected_card_type = parent.getItemAtPosition(position).toString();
             }
-        });
 
-        cardtype_icon.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                cardtype.showDropDown();
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
+
         //End Dropdown
 
         //Insert Data
@@ -83,41 +81,47 @@ public class OrderConfirm_Page extends AppCompatActivity {
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Get data
-                String card_type = selected_card_type;
-                String name = txt_name.getText().toString();
-                String card_number =  txt_cardnumber.getText().toString();
-                String exp_date = txt_expdate.getText().toString();
-                String security_code = txt_securitycode.getText().toString();
-                String order_id = cus_contact;
-                String amount = TotalAmount;
+                try{
+                    //Get data
+                    String card_type = selected_card_type;
+                    String name = txt_name.getText().toString();
+                    String card_number =  txt_cardnumber.getText().toString();
+                    String exp_date = txt_expdate.getText().toString();
+                    String security_code = txt_securitycode.getText().toString();
+                    String order_id = cus_contact;
+                    String amount = TotalAmount;
 
-                if(!card_type.trim().isEmpty() && !name.trim().isEmpty() && !card_number.trim().isEmpty()
-                        && !exp_date.trim().isEmpty() && !security_code.trim().isEmpty() && !order_id.trim().isEmpty() && !amount.trim().isEmpty()){
+                    if(!card_type.trim().isEmpty() && !name.trim().isEmpty() && !card_number.trim().isEmpty()
+                            && !exp_date.trim().isEmpty() && !security_code.trim().isEmpty() && !order_id.trim().isEmpty() && !amount.trim().isEmpty()){
 
-                    DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("placeorderpayments");
+                        DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("placeorderpayments");
 
-                    PlaceOrderPayments obj = new PlaceOrderPayments(card_type,name,card_number,exp_date,security_code,order_id,amount);
+                        PlaceOrderPayments obj = new PlaceOrderPayments(card_type,name,card_number,exp_date,security_code,order_id,amount);
 
-                    DatabaseRef.child(cus_contact).setValue(obj);
+                        DatabaseRef.child(cus_contact).setValue(obj);
 
-                    Toast.makeText(OrderConfirm_Page.this,"Place Order Successful..!",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(OrderConfirm_Page.this,Home_Page.class);
-                    intent.putExtra("title",cus_title);
-                    intent.putExtra("name",cus_name);
-                    intent.putExtra("mobile",cus_contact);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
-                    finish();
+                        DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("mycart");
 
-                }else {
+                        DatabaseRef.child(cus_contact).removeValue();
+
+                        Toast.makeText(OrderConfirm_Page.this,"Place Order Successful..!",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(OrderConfirm_Page.this,Home_Page.class);
+                        intent.putExtra("title",cus_title);
+                        intent.putExtra("name",cus_name);
+                        intent.putExtra("mobile",cus_contact);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.slide_from_right,R.anim.slide_to_left);
+                        finish();
+
+                    }else {
+                        Toast.makeText(OrderConfirm_Page.this,"Fill your card information..",Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e){
                     Toast.makeText(OrderConfirm_Page.this,"Fill your card information..",Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
-
-    private static final String[] CardType = new String[]{"VISA","MasterCard"};
 
     @Override
     public void onBackPressed() {

@@ -16,6 +16,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,7 @@ public class MyCart_Page extends AppCompatActivity {
     RecyclerView savemycarttable;
     private DatabaseReference DatabaseRef,mycartNoOfProRef,MyCartTotProRef;
 
-    String cus_title,cus_contact,cus_name,selected_payment_method;
+    private String cus_title,cus_contact,cus_name,selected_payment_method;
 
     public int No_Of_Pro = 0, Sub_Total = 0;
 
@@ -49,28 +50,25 @@ public class MyCart_Page extends AppCompatActivity {
         cus_name = getIntent().getExtras().getString("name");
         cus_title = getIntent().getExtras().getString("title");
 
-        //Dropdown
-        final AutoCompleteTextView paymentmethod = (AutoCompleteTextView)findViewById(R.id.txt_paymethod);
-        ImageView paymentmethod_icon = (ImageView)findViewById(R.id.dropdown_icon);
+        //Dorpdown
 
-        paymentmethod.setThreshold(0);
+        Spinner txt_paymethod = (Spinner)findViewById(R.id.txt_paymethod);
+        ArrayAdapter<String> title_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.Paymentmethod));
+        title_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        txt_paymethod.setAdapter(title_adapter);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,PaymentMethod);
-        paymentmethod.setAdapter(adapter);
-        //get Selected data
-        paymentmethod.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        txt_paymethod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selected_payment_method = parent.getItemAtPosition(position).toString();
             }
-        });
 
-        paymentmethod_icon.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                paymentmethod.showDropDown();
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
+
         //End Dropdown
 
         //Order Confirm
@@ -80,27 +78,35 @@ public class MyCart_Page extends AppCompatActivity {
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String PayMethod = selected_payment_method;
-                if(PayMethod == "Cash On Delivery"){
-//                    Intent intent = new Intent(MyCart_Page.this,OrderConfirm_Page.class);
-//                    intent.putExtra("title",cus_title);
-//                    intent.putExtra("name",cus_name);
-//                    intent.putExtra("mobile",cus_contact);
-//                    intent.putExtra("TotalAmount",txt_maintotal.getText());
-//                    startActivity(intent);
-//                    overridePendingTransition(R.anim.slide_from_left,R.anim.slide_to_right);
-//                    finish();
-                }else if(PayMethod == "Credit Cards"){
-                    Intent intent = new Intent(MyCart_Page.this,OrderConfirm_Page.class);
-                    intent.putExtra("title",cus_title);
-                    intent.putExtra("name",cus_name);
-                    intent.putExtra("mobile",cus_contact);
-                    intent.putExtra("TotalAmount",txt_maintotal.getText());
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.slide_from_left,R.anim.slide_to_right);
-                    finish();
-                }else {
-                    Toast.makeText(MyCart_Page.this,"Please select payment method.. ",Toast.LENGTH_LONG).show();
+                try{
+                    switch (selected_payment_method){
+                        case "":
+                            Toast.makeText(MyCart_Page.this,"Please select payment method.. ",Toast.LENGTH_LONG).show();
+                            break;
+                        case "Cash On Delivery":
+//                        Intent intent = new Intent(MyCart_Page.this,OrderConfirm_Page.class);
+//                        intent.putExtra("title",cus_title);
+//                        intent.putExtra("name",cus_name);
+//                        intent.putExtra("mobile",cus_contact);
+//                        intent.putExtra("TotalAmount",txt_maintotal.getText());
+//                        startActivity(intent);
+//                        overridePendingTransition(R.anim.slide_from_left,R.anim.slide_to_right);
+//                        finish();
+                            break;
+                        case "Credit Cards":
+                            Intent intent = new Intent(MyCart_Page.this,OrderConfirm_Page.class);
+                            intent.putExtra("title",cus_title);
+                            intent.putExtra("name",cus_name);
+                            intent.putExtra("mobile",cus_contact);
+                            intent.putExtra("TotalAmount",txt_maintotal.getText());
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.slide_from_left,R.anim.slide_to_right);
+                            finish();
+                            break;
+                        default:Toast.makeText(MyCart_Page.this,"Please select payment method.. ",Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(MyCart_Page.this,"Error.. ",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -193,15 +199,23 @@ public class MyCart_Page extends AppCompatActivity {
                 productListViewHolder.itemView.findViewById(R.id.btn_remove).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("mycart").child(cus_contact);
+                        try{
+                            DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("mycart").child(cus_contact);
 
-                        DatabaseRef.child(model.getP_code()).removeValue();
+                            DatabaseRef.child(model.getP_code()).removeValue();
 
-                        Intent intent = new Intent(MyCart_Page.this,MyCart_Page.class);
-                        intent.putExtra("title",cus_title);
-                        intent.putExtra("name",cus_name);
-                        intent.putExtra("mobile",cus_contact);
-                        startActivity(intent);
+                            DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("placeorderproducts").child(cus_contact);
+
+                            DatabaseRef.child(model.getP_code()).removeValue();
+
+                            Intent intent = new Intent(MyCart_Page.this,MyCart_Page.class);
+                            intent.putExtra("title",cus_title);
+                            intent.putExtra("name",cus_name);
+                            intent.putExtra("mobile",cus_contact);
+                            startActivity(intent);
+                        }catch (Exception e){
+
+                        }
                     }
                 });
 
@@ -236,8 +250,6 @@ public class MyCart_Page extends AppCompatActivity {
             pro_total.setText(totalString);
         }
     }
-
-    private static final String[] PaymentMethod = new String[]{"Cash On Delivery","Credit Cards"};
 
     @Override
     public void onBackPressed() {

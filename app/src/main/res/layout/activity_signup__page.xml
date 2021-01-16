@@ -28,27 +28,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/dropdown_icon"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginLeft="115dp"
-        android:src="@drawable/dropdown_arrow_96px"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_title"
-        app:layout_constraintEnd_toEndOf="@+id/txt_title"
-        app:layout_constraintStart_toStartOf="@+id/txt_title"
-        app:layout_constraintTop_toTopOf="@+id/txt_title" />
 
-    <AutoCompleteTextView
+    <Spinner
         android:id="@+id/txt_title"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:hint="Title"
+        android:layout_height="45dp"
         android:layout_marginRight="160dp"
         android:layout_marginTop="25dp"
+        android:entries="@array/title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Logo_Keells" />
+        app:layout_constraintTop_toBottomOf="@+id/Logo_Keells"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/txt_fname"

@@ -47,22 +47,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_name" />
 
-    <ImageView
-        android:id="@+id/dropdown_icon"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginLeft="275dp"
-        android:src="@drawable/dropdown_arrow_96px"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_cardtype"
-        app:layout_constraintEnd_toEndOf="@+id/txt_cardtype"
-        app:layout_constraintStart_toStartOf="@+id/txt_cardtype"
-        app:layout_constraintTop_toTopOf="@+id/txt_cardtype" />
-
-    <AutoCompleteTextView
+    <Spinner
         android:id="@+id/txt_cardtype"
         android:layout_width="310dp"
-        android:layout_height="wrap_content"
-        android:hint="Card Type"
+        android:layout_height="45dp"
+        android:entries="@array/CardType"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_cardnumber" />

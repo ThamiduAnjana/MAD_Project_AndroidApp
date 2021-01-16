@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,12 +24,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 public class Home_Page extends AppCompatActivity {
 
     private RecyclerView card_viewlist;
-    private DatabaseReference DatabaseRef,MyCartTotProRef;
+    private DatabaseReference DatabaseRef,MyCartcountProRef,MyCartTotProRef;
 
     String cus_title,cus_name,cus_contact;
+
+    int cal = 0;
+
+    TextView lb_cartprice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +80,7 @@ public class Home_Page extends AppCompatActivity {
             }
         });
 
-        TextView lb_cartprice = (TextView)findViewById(R.id.lb_cartprice);
+        lb_cartprice = (TextView)findViewById(R.id.lb_cartprice);
         lb_cartprice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,14 +94,61 @@ public class Home_Page extends AppCompatActivity {
             }
         });
 
-        //Load MyCart amount
-//        MyCartTotProRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("mycart").child(cus_contact);
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        //Load MyCart amount
+
+        MyCartcountProRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("mycart");
+        MyCartcountProRef.child(cus_contact).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.exists()){
+
+                    int count = (int) snapshot.getChildrenCount();
+                    String[] data1 = new String[count];
+                    int i = 0;
+                    for(DataSnapshot d : snapshot.getChildren()){
+                        data1[i] = d.getKey();
+                        Log.d("tag 1", data1[i]);
+
+                        MyCartTotProRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("mycart").child(cus_contact);
+                        MyCartTotProRef.child(data1[i]).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if(snapshot.exists()){
+                                    lb_cartprice.setText("Rs.0");
+                                    int item_price = Integer.parseInt(snapshot.child("p_price").getValue().toString());
+                                    int item_qty = Integer.parseInt(snapshot.child("p_qty").getValue().toString());
+                                    int calqty = item_price*item_qty;
+                                    cal = cal + calqty;
+                                    lb_cartprice.setText("Rs."+cal);
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                        i++;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
         FirebaseRecyclerAdapter<ProductCardHelper,ProductCardViewHolder>firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<ProductCardHelper,ProductCardViewHolder>
                 (ProductCardHelper.class,R.layout.productcard,ProductCardViewHolder.class,DatabaseRef) {
 
@@ -111,22 +165,37 @@ public class Home_Page extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("mycart");
+                        try{
+                            DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("mycart");
 
-                        final ElegantNumberButton txt_qt = (ElegantNumberButton) viewHolder.itemView.findViewById(R.id.txt_qty);
-                        final int qty = Integer.parseInt(txt_qt.getNumber());
+                            final ElegantNumberButton txt_qt = (ElegantNumberButton) viewHolder.itemView.findViewById(R.id.txt_qty);
+                            final int qty = Integer.parseInt(txt_qt.getNumber());
 
-                        String p_name = model.getP_name();
-                        String p_code = model.getP_code();
-                        Long p_price = model.getP_price();
-                        int p_qty = qty;
+                            String p_name = model.getP_name();
+                            String p_code = model.getP_code();
+                            Long p_price = model.getP_price();
+                            int p_qty = qty;
 
-                        mycart obj = new mycart(p_name,p_code,p_price,p_qty);
+                            mycart obj = new mycart(p_name,p_code,p_price,p_qty);
 
-                        DatabaseRef.child(cus_contact).child(p_code).setValue(obj);
+                            DatabaseRef.child(cus_contact).child(p_code).setValue(obj);
 
-                        Toast.makeText(Home_Page.this,"Add Successful..!",Toast.LENGTH_LONG).show();
-                        txt_qt.setNumber("1");
+                            DatabaseRef = FirebaseDatabase.getInstance().getReference().child("OnlineKeels").child("placeorderproducts");
+
+                            PlaceOrderProducts obj1 = new PlaceOrderProducts(p_name,p_code,p_price,p_qty);
+                            DatabaseRef.child(cus_contact).child(p_code).setValue(obj1);
+
+                            Toast.makeText(Home_Page.this,"Add Successful..!",Toast.LENGTH_LONG).show();
+                            txt_qt.setNumber("1");
+
+                            Intent intent = new Intent(Home_Page.this,Home_Page.class);
+                            intent.putExtra("title",cus_title);
+                            intent.putExtra("name",cus_name);
+                            intent.putExtra("mobile",cus_contact);
+                            startActivity(intent);
+                        }catch (Exception e){
+                            Toast.makeText(Home_Page.this,"Error.!",Toast.LENGTH_LONG).show();
+                        }
                     }
                 });
             }
